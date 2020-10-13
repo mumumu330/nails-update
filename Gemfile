@@ -69,6 +69,7 @@ gem "refile-mini_magick"
 gem 'kaminari'
 
 gem 'dotenv-rails'
-group :production do
+#group :production do
   gem 'mysql2'
-end
+#end
+
