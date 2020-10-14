@@ -1,0 +1,20 @@
+<div>
+  <% post_images.each do |post_image| %>
+  <div>
+    <%= link_to post_image_path(post_image.id) do %>
+      <%= attachment_image_tag post_image, :image %>
+    <% end %>
+    <div>
+      <%= attachment_image_tag post_image.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
+    </div>
+      <p><%= post_image.caption %></p>
+    <li>
+      <%= post_image.user.name %>
+    </li>
+    <li>
+      <a href="#">comment</a>
+    </li>
+  </div>
+  <% end %>
+  
+</div>
