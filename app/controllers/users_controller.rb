@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
   def show
     @user = User.find(params[:id])
     @post_images = @user.post_images.page(params[:page]).reverse_order
@@ -12,6 +13,16 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update(user_params)
     redirect_to user_path(@user.id)
+  end
+
+  def follower
+    user = User.find(params[:user_id])
+    @users = user.following_user
+  end
+
+  def followed
+    user = User.find(params[:user_id])
+    @users = user.follower_user
   end
 
   private

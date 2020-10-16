@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'home/about' => 'home#about'
 
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -8,9 +9,15 @@ Rails.application.routes.draw do
     resources :post_comments, only: [:create, :destroy]
   end
 
-  resources :users, only: [:show, :edit, :update]
+  resources :users do
+    resource :relationships, only: [:show, :edit, :update]
+    get 'follower' => 'users#follower'
+    get 'followed' => 'users#followed'
+  end
+
   post 'follow/:id' => 'relationships#follow', as: 'follow' # フォローする
   post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow' # フォロー外す
 
   get '/search', to: 'search#search'
+  
 end
