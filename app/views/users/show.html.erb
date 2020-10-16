@@ -2,14 +2,14 @@
 <h3><%= @user.name %></h3>
 <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %>
 <% if @user.id == current_user.id %>
-<p><%= link_to 'profile edit', edit_user_path(@user) %></p>
+<p><%= link_to 'プロフィール編集', edit_user_path(@user) %></p>
 <% end %>
 </div>
 
-<h2>ユーザー詳細ページ</h2>
+<h4>ユーザー詳細ページ</h4>
 <p><%= "id: #{@user.id}" %></p>
-<p><%= "フォロー数: #{@user.follower.count}" %></p>
-<p><%= "フォロワー数: #{@user.followed.count}" %></p>
+<p>フォロー数:<%= link_to @user.follower.count, user_follower_path(@user.id) %></p>
+<p>フォロワー数:<%= link_to @user.followed.count, user_followed_path(@user.id) %></p>
 <% unless @user == current_user %>
   <% if current_user.following?(@user) %>
     <%= link_to 'フォロー外す', unfollow_path(@user.id), method: :POST %>
@@ -19,44 +19,21 @@
 <% end %>
 <p></p>
 
-<h3>フォロー一覧</h3>
-  <% @user.following_user.where.not(id: current_user.id).each do |user| %>
-    <p>
-      <%= "id: #{user.id} email: #{user.email}" %>
-      <% if current_user.following?(user) %>
-        <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
-      <% else %>
-        <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
-      <% end %>
-      <%= link_to "show", user_path(user) %>
-    </p>
-  <% end %>
-<h3>フォロワー一覧</h3>
-  <% @user.follower_user.where.not(id: current_user.id).each do |user| %>
-    <p>
-      <%= "id: #{user.id} email: #{user.email}" %>
-      <% if current_user.following?(user) %>
-        <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
-      <% else %>
-        <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
-      <% end %>
-      <%= link_to "show", user_path(user) %>
-    </p>
-  <% end %>
+
 
 
 <div>
 <% @post_images.each do |post_image| %>
 <div>
 <%= link_to post_image_path(post_image.id) do %>
-<%= attachment_image_tag post_image, :image %>
+<%= attachment_image_tag post_image, :image, size: "400x400" %>
 <% end %>
 <p><%= post_image.caption %></p>
 <li>
-<%= post_image.user.name %>
+<span class="glyphicon glyphicon-user" aria-hidden="true"></span><%= post_image.user.name %>
 </li>
 <li>
-<a href="#">comment</a>
+<a href="#"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span>comment</a>
 </li>
 </div>
 <% end %>

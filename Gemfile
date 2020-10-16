@@ -77,3 +77,5 @@ gem 'dotenv-rails'
   gem 'mysql2'
 #end
 
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'jquery-rails'
