@@ -10,71 +10,60 @@
         By<a href="#"><%= @post_image.user.name %></a>
       </li>
       <li><%= @post_image.created_at.strftime('%Y/%m/%d') %></li>
-        <% if @post_image.favorited_by?(current_user) %>
-        <li>
-          <%= link_to post_image_favorites_path(@post_image), method: :delete do %>
-            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-            <a href="#"><%= @post_image.favorites.count %></a>
-          <% end %>
-        </li>
-        <% else %>
-        <li>
-          <%= link_to post_image_favorites_path(@post_image), method: :post do %>
-            <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
-            <%= @post_image.favorites.count %>
-          <% end %>
-        </li>
+
+      <li id="favorite_<%= @post_image.id %>">
+				<%= render 'post_images/post', post_image: @post_image %>
+			</li>
+      
+      <li>
+        <span class="glyphicon glyphicon-comment" aria-hidden="true"></span><%= @post_image.post_comments.count %>
+      </li>
+      <li>
+        <% if @post_image.user == current_user %>
+          <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+          <%= link_to '削除', post_image_path(@post_image), method: :delete %>
+        <% end %>
+      </li>
+    </ul>
+    <div>
+      <p><%= @post_image.caption %></p>
+    </div>
+    <div>
+      <h4><%= @post_image.post_comments.count %>件コメント</h4>
+    </div>
+
+    <ol>
+      <% @post_image.post_comments.each do |post_comment| %>
+      <li>
+        <%= attachment_image_tag post_comment.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
+          <div>
+            <a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><%= post_comment.user.name %></a>
+            <span>
+              <span><%= @post_image.created_at.strftime('%Y/%m/%d') %></span>
+            </span>
+          </div>
+
+          <div><%= post_comment.comment %></div>
+            <% if post_comment.user == current_user %>
+              <div>
+                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                <%= link_to '削除', post_image_post_comment_path(post_comment.post_image, post_comment), method: :delete %>
+              </div>
+            <% end %>
+        <% end %>
+    </ol>
+
+    <div>
+      <h3>
+        <span>コメント</span>
+      </h3>
+    </div>
+      <%= form_for [@post_image, @post_comment] do |f| %>
+        <div>
+          <%= f.text_field :comment, placeholder: "コメントを入力" %>
+        </div>
+        <%= f.submit "送信" %>
       <% end %>
-<li>
-<span class="glyphicon glyphicon-comment" aria-hidden="true"></span><%= @post_image.post_comments.count %>
-</li>
-<li>
-<% if @post_image.user == current_user %>
-<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-  <%= link_to '削除', post_image_path(@post_image), method: :delete %>
-<% end %>
-</li>
-</ul>
-<div>
-<p><%= @post_image.caption %></p>
-</div>
-<div>
-<h4><%= @post_image.post_comments.count %>件コメント</h4>
-</div>
-
-<ol>
-<% @post_image.post_comments.each do |post_comment| %>
-<li>
-<%= attachment_image_tag post_comment.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
-
-<div>
-<a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><%= post_comment.user.name %></a>
-<span>
-<span><%= @post_image.created_at.strftime('%Y/%m/%d') %></span>
-</span>
-</div>
-
-<div><%= post_comment.comment %></div>
-<% if post_comment.user == current_user %>
-  <div>
-    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-    <%= link_to '削除', post_image_post_comment_path(post_comment.post_image, post_comment), method: :delete %>
+    </div>
   </div>
-<% end %>
-
-<% end %>
-</ol>
-<div>
-<h3>
-<span>コメント</span>
-</h3>
-</div>
-<%= form_for [@post_image, @post_comment] do |f| %>
-<div>
-<%= f.text_field :comment, placeholder: "コメントを入力" %>
-</div>
-<%= f.submit "送信" %>
-<% end %>
-</div>
-</div>
 </div>

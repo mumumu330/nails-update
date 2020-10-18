@@ -1,4 +1,4 @@
-  <% if user_signed_in? %>
+<% if user_signed_in? %>
   <div class="search-form" style="margin-top: 50px; text-align: right;">
     <%= form_tag(search_path, method: :get) do %>
       <%= text_field_tag 'search[content]' %>
