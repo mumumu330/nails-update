@@ -31,7 +31,7 @@ header {
   color: rgb(105, 105, 109);
   background-color: white;
   .nav-list{
-    margin: 10px 25px 0 5px;
+    margin: 5px 25px 0 5px;
   }
 }
 header span {
@@ -45,4 +45,18 @@ body {
 
 li{
   display: inline;
+}
+.glayback{
+	background-color: rgb(219, 223, 223);
+}
+
+.whiteback{
+	background-color: white;
+}
+
+.whiteblock{
+	margin-top: 100px;
+	margin-bottom: 100px;
+	padding-top: 50px;
+	padding-bottom: 50px;
 }
