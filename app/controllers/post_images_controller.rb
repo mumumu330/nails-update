@@ -17,6 +17,7 @@ class PostImagesController < ApplicationController
 
   def index
     @post_images = PostImage.page(params[:page]).reverse_order
+    # @user = User.find(params[:id])
     # @post_image = PostImage.find(params[:id])
     
   end

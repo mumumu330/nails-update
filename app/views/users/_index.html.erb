@@ -1,11 +1,11 @@
+
 <h4>ユーザー一覧画面</h4>
-  <% users.each do |user| %>
-    <p>
-      <%= "id: #{user.id} email: #{user.email}" %>
-        <% if current_user.following?(user) %>
-          <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
-        <% else %>
-          <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
-        <% end %>
-    </p>
+<% users.each do |user| %>
+	<li>
+		<%= attachment_image_tag user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50" %>
+	</li>
+	<li><%= user.name %></li>
+	<li><%= "フォロー数: #{user.follower.count}" %></li>
+	<li><%= "フォロワー数: #{user.followed.count}" %></li>
+	<li><%= link_to "Show", user_path(user.id), class: "user_#{user.id}" %></li><br>
 <% end %>
