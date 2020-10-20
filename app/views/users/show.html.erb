@@ -31,7 +31,7 @@
       <%= fields_for @entry do |e| %>
         <%= e.hidden_field :user_id, :value=> @user.id %>
       <% end %>
-      <%= f.submit "チャットを始める" %>
+      <%= f.submit "チャットを始める", class: "btn btn-outline-dark float-right" %>
     <% end %>
   <% end %>
 <% end %>
@@ -44,10 +44,13 @@
               <% end %>
                 <p><%= post_image.caption %></p>
                   <li>
-                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span><%= post_image.user.name %>
+                    <%= link_to user_path(post_image.user.id) do %>
+                      <span class="glyphicon glyphicon-user" aria-hidden="true"></span><%= post_image.user.name %>
+                    <% end %>
                   </li>
                   <li>
-                    <a href="#"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span>comment</a>
+                    <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                    <%= post_image.post_comments.count %>
                   </li>
             </div>
           <% end %>

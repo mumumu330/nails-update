@@ -6,11 +6,12 @@ class PostCommentsController < ApplicationController
     @comment = current_user.post_comments.new(post_comment_params)
     @comment.post_image_id = @post_image.id
     if @comment.save
-    respond_to do |format|
-      format.html { redirect_to post_image_path(@post_image.id) }
-      format.json { render json: { post_comments: @comment } }
+      @post_comments = PostComment.where(post_image_id: @post_image.id)
+    # respond_to do |format|
+      # format.html { redirect_to post_image_path(@post_image.id) }
+      # format.json { render json: { post_comments: @comment } }
+    # end
     end
-  end
     # render post_image_path
     # redirect_to post_image_path(@post_image.id)
   end
@@ -22,6 +23,7 @@ class PostCommentsController < ApplicationController
       # render "destroy"
     end
     @post_comment.destroy
+    @post_comments = PostComment.where(post_image_id: @post_image.id)
     # render "destroy"
     # redirect_to post_image_path(params[:post_image_id])
   end
