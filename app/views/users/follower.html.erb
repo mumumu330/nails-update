@@ -1,31 +1,35 @@
-<body>
-  <h2>Follow Users</h2>
+<div class="whiteblock">
+<div class="row">
+<div class="col-md-offset-1 col-md-5">
+  <h2>フォロー一覧</h2>
     <div class="container">
 		  <div class="row">
 			  <section class="col-xs-12">
-          <table class="table table-hover table-inverse">
+          <%# <table class="table table-hover table-inverse">
             <thead>
 						  <tr>
 							  <th>image</th>
 							  <th>name</th>
 							  <th></th>
 						  </tr>
-					  </thead>
+					  </thead> %>
 					    <% @users.each do |user| %>
-					      <tbody>
-						      <tr>
-							      <td>
+					      <%# <tbody> %>
+						      <%# <tr> %>
+							      <li>
 								      <%= attachment_image_tag user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50" %>
-							      </td>
-							      <td><%= user.name %></td>
-							      <td><%= "フォロー数: #{user.follower.count}" %></td>
-							      <td><%= "フォロワー数: #{user.followed.count}" %></td>
-							      <td><%= link_to "Show", user_path(user.id), class: "user_#{user.id}" %></td>
-						      </tr>
-					      </tbody>
+							      </li>
+							      <li><%= user.name %></li>
+							      <li><%= "フォロー数: #{user.follower.count}" %></li>
+							      <li><%= "フォロワー数: #{user.followed.count}" %></li>
+							      <li><%= link_to "Show", user_path(user.id), class: "user_#{user.id}" %></li><br>
+						      <%# </tr> %>
+					      <%# </tbody> %>
               <% end %>
-          </table>
+          <%# </table> %>
         </section>
       </div>
     </div>
-</body>
+</div>
+</div>
+</div>
