@@ -1,0 +1,18 @@
+      <% post_comments.each do |post_comment| %>
+      <li>
+        <%= attachment_image_tag post_comment.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
+          <div>
+            <a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><%= post_comment.user.name %></a>
+            <span>
+              <span><%= @post_image.created_at.strftime('%Y/%m/%d') %></span>
+            </span>
+          </div>
+
+          <div><%= post_comment.comment %></div>
+            <% if post_comment.user == current_user %>
+              <div>
+                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                <%= link_to '削除', post_image_post_comment_path(post_comment.post_image, post_comment), method: :delete, remote: true %>
+              </div>
+            <% end %>
+        <% end %>

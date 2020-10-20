@@ -13,8 +13,8 @@
       <header class="navbar navbar-fixed-top">
         <div class="col-xs-11">
           <ul class='nav navbar-nav navbar-left' >
-            <%= image_tag'logo.png', :size => '100x100' %>
-          </ul>
+            <%= image_tag'logo.png', :size => '60x60' %>
+          </ul> 
           <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
             <li class="nav-list">
@@ -40,7 +40,7 @@
               <%= link_to 'About', home_about_path %>
             </li>
           <% end %>
-          <br>
+          
           <% if user_signed_in? %>
             <%= render 'layouts/search' %>
           <% end %>
@@ -49,13 +49,27 @@
       </header>
 
       <div class="body">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-offset-3 col-md-6">
-              <%= yield %>
+        <div class="glayback">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-offset-3 col-md-6">
+                <div class="whiteback">
+                  <%= yield %>
+                </div>
+              </div>
             </div>
           </div>
         </div>  
       </div>
   </body>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-2 col-xs-offset-9">
+          <p class="no-margin" style="font-size: 30px;">footer</p>
+        </div>
+      </div>
+    </div>
+  </footer>
 </html>

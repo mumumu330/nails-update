@@ -17,11 +17,14 @@ class PostImagesController < ApplicationController
 
   def index
     @post_images = PostImage.page(params[:page]).reverse_order
+    # @post_image = PostImage.find(params[:id])
+    
   end
 
   def show
     @post_image = PostImage.find(params[:id])
     @post_comment = PostComment.new
+    @post_comments = PostComment.where(post_image_id: @post_image.id)
   end
 
   def destroy
@@ -32,6 +35,7 @@ class PostImagesController < ApplicationController
 
   private
   def post_image_params
-    params.require(:post_image).permit(:image, :caption)
+    params.require(:post_image).permit(:image, :caption, :tag_list)
   end
+  
 end
