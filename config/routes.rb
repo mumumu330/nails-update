@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'post_images#index'
+  root 'post_images#rank'
   resources :messages, :only => [:create]
   resources :rooms, :only => [:create, :show, :index]
   resources :post_images, only: [:new, :create, :index, :show, :destroy] do
@@ -21,5 +21,7 @@ Rails.application.routes.draw do
   post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow' # フォロー外す
 
   get '/search', to: 'search#search'
+
+  
   
 end

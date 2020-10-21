@@ -1,4 +1,8 @@
-
+<div class="col-md-12">
+                <div class="whiteback">
+<div class="whiteblock">
+<div class="row">
+<div class="col-md-offset-1 col-md-11">
 <h4>ユーザー一覧画面</h4>
 <% users.each do |user| %>
 	<li>
@@ -9,3 +13,8 @@
 	<li><%= "フォロワー数: #{user.followed.count}" %></li>
 	<li><%= link_to "Show", user_path(user.id), class: "user_#{user.id}" %></li><br>
 <% end %>
+</div>
+</div>
+</div>
+</div>
+</div>

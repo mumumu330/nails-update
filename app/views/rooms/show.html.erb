@@ -1,11 +1,13 @@
+<div class="col-md-offset-3 col-md-6">
+                <div class="whiteback">
 <div class="whiteblock">
 <div class="row">
-<div class="col-md-offset-1 col-md-5">
+<div class="col-md-offset-1 col-md-10">
 <h1>DM</h1>
 
 <h4>参加者</h4>
 <% @entries.each do |e| %>
-  <h5><strong><a href="/users/<%= e.user.id %>"><%= e.user.name%>さん</a></strong></h5>
+  <li><strong><a href="/users/<%= e.user.id %>"><%= e.user.name%>さん</a></strong></li>
 <% end %>
 
 <hr>
@@ -20,12 +22,14 @@
 <% end %>
 
 <%= form_for @message do |f| %>
-  <%= f.text_field :content, :placeholder => "メッセージを入力して下さい" , :size => 60 %>
+  <%= f.text_field :content, :placeholder => "メッセージ入力" , :size => 60 %>
   <%= f.hidden_field :room_id, :value => @room.id %>
   <br>
   <%= f.submit "投稿する", class: "btn btn-outline-dark float-right" %>
 <% end %>
 
+</div>
+</div>
 </div>
 </div>
 </div>

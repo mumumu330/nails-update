@@ -22,6 +22,10 @@ class PostImagesController < ApplicationController
     
   end
 
+  def rank
+    @all_ranks = PostImage.find(Favorite.group(:post_image_id).order('count(post_image_id) desc').limit(10).pluck(:post_image_id))
+  end
+
   def show
     @post_image = PostImage.find(params[:id])
     @post_comment = PostComment.new
@@ -33,6 +37,7 @@ class PostImagesController < ApplicationController
     @post_image.destroy
     redirect_to post_images_path
   end
+  
 
   private
   def post_image_params

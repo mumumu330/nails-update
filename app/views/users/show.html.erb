@@ -1,3 +1,5 @@
+<div class="col-md-offset-3 col-md-6">
+<div class="whiteback">
 <div class="whiteblock">
 <div class="row">
 <div class="col-md-offset-1 col-md-5">
@@ -5,14 +7,14 @@
   <h3><%= @user.name %></h3>
     <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %>
       <% if @user.id == current_user.id %>
-        <p><%= link_to 'プロフィール編集', edit_user_path(@user) %></p>
+        <p><%= link_to 'プロフィール編集', edit_user_path(@user), class: "glyphicon glyphicon-cog" %></p>
       <% end %>
 </div>
 
 <h4>ユーザー詳細ページ</h4>
-  <p><%= "id: #{@user.id}" %></p>
-    <p>フォロー数:<%= link_to @user.follower.count, user_follower_path(@user.id) %></p>
-    <p>フォロワー数:<%= link_to @user.followed.count, user_followed_path(@user.id) %></p>
+  <li><%#= "id: #{@user.id}" %></li>
+    <li>フォロー数:<%= link_to @user.follower.count, user_follower_path(@user.id) %></li>
+    <li>フォロワー数:<%= link_to @user.followed.count, user_followed_path(@user.id) %></li><br>
       <% unless @user == current_user %>
         <% if current_user.following?(@user) %>
           <%= link_to 'フォロー外す', unfollow_path(@user.id), method: :POST %>
@@ -55,6 +57,8 @@
             </div>
           <% end %>
         <%= paginate @post_images %>
+</div>
+</div>
 </div>
 </div>
 </div>
