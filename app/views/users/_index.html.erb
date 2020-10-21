@@ -1,20 +1,20 @@
 <div class="col-md-12">
-                <div class="whiteback">
-<div class="whiteblock">
-<div class="row">
-<div class="col-md-offset-1 col-md-11">
-<h4>ユーザー一覧画面</h4>
-<% users.each do |user| %>
-	<li>
-		<%= attachment_image_tag user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50" %>
-	</li>
-	<li><%= user.name %></li>
-	<li><%= "フォロー数: #{user.follower.count}" %></li>
-	<li><%= "フォロワー数: #{user.followed.count}" %></li>
-	<li><%= link_to "Show", user_path(user.id), class: "user_#{user.id}" %></li><br>
-<% end %>
-</div>
-</div>
-</div>
-</div>
+	<div class="whiteback">
+		<div class="whiteblock">
+			<div class="row">
+				<div class="col-md-offset-1 col-md-11">
+					<h4>ユーザー一覧画面</h4>
+						<% users.each do |user| %>
+							<li>
+								<%= attachment_image_tag user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50" %>
+							</li>
+							<li><%= user.name %></li>
+							<li><%= "フォロー数: #{user.follower.count}" %></li>
+							<li><%= "フォロワー数: #{user.followed.count}" %></li>
+							<li><%= link_to "Show", user_path(user.id), class: "user_#{user.id}" %></li><br>
+						<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
