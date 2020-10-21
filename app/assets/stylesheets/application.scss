@@ -31,12 +31,17 @@ header {
   color: rgb(105, 105, 109);
   background-color: white;
   .nav-list{
-    margin: 5px 25px 0 5px;
+    margin: 0px 10px 0 5px;
   }
 }
 header span {
  	font-size: 30px;
  	padding-top: 30px;
+}
+
+.nails{
+	color: rgb(105, 105, 109);
+	margin: 5px 10px 0 5px;
 }
 
 body {
@@ -59,4 +64,11 @@ li{
 	margin-bottom: 100px;
 	padding-top: 50px;
 	padding-bottom: 50px;
+}
+
+.about{
+	color: rgb(105, 105, 109);
+}
+.foot{
+	color: rgb(105, 105, 109);
 }

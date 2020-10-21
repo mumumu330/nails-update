@@ -1,0 +1,29 @@
+<div class="col-md-offset-3 col-md-6">
+  <div class="whiteback">
+  <div class="whiteblock">
+    <div class="row">
+      <div class="col-md-offset-1 col-md-10">
+        <div>
+          <h2>Direct Message</h2>
+        </div>
+
+        <div>
+          <% @rooms.each do |room| %>
+            <li>
+							<%= attachment_image_tag room.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50" %> 
+						</li>
+						<li>
+              <% room.entries.each do |e| %>
+                <% if e.user.id != current_user.id %>
+                  <%= e.user.name %>
+                <% end %>
+              <% end %>
+            </li>
+            <li><%= link_to "Show", room_path(room.id) %></li><br>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>

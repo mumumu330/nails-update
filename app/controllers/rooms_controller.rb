@@ -17,4 +17,8 @@ class RoomsController < ApplicationController
       redirect_back(fallback_location: root_path)
     end
   end
+
+  def index
+    @rooms = current_user.rooms.includes(:messages).order("messages.created_at desc")
+  end
 end
