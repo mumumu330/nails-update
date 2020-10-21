@@ -1,37 +1,35 @@
 <div class="col-md-12">
-                <div class="whiteback">
-<div class="whiteblock">
-<div class="row">
-<div class="col-md-offset-1 col-md-5">
-<div>
-  <% post_images.each do |post_image| %>
-    <div>
-      <%= link_to post_image_path(post_image.id) do %>
-        <%= attachment_image_tag post_image, :image, size: "400x400" %>
-      <% end %>
-        <div>
-          <%= attachment_image_tag post_image.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
+  <div class="whiteback">
+    <div class="whiteblock">
+      <div class="row">
+        <div class="col-md-offset-1 col-md-5">
+          <div>
+            <% post_images.each do |post_image| %>
+              <div>
+                <%= link_to post_image_path(post_image.id) do %>
+                <%= attachment_image_tag post_image, :image, size: "400x400" %>
+            <% end %>
+              <div>
+                <%= attachment_image_tag post_image.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
+              </div>
+                <p><%= post_image.caption %></p>
+                  <li>
+                    <%= link_to user_path(post_image.user.id) do %>
+                      <span class="glyphicon glyphicon-user" aria-hidden="true"></span><%= post_image.user.name %>
+                    <% end %>
+                  </li>
+                  <li id="favorite_<%= post_image.id %>">
+				            <%= render 'post_images/post', post_image: post_image %>  
+			            </li>
+                  <li>
+                    <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                    <%= post_image.post_comments.count %>
+                  </li>
+              </div>
+            <% end %>
+          </div>
         </div>
-        <p><%= post_image.caption %></p>
-        <li>
-          <%= link_to user_path(post_image.user.id) do %>
-            <span class="glyphicon glyphicon-user" aria-hidden="true"></span><%= post_image.user.name %>
-          <% end %>
-        </li>
-        
-        <li id="favorite_<%= post_image.id %>">
-				  <%= render 'post_images/post', post_image: post_image %>  
-			  </li>
-
-        <li>
-          <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
-          <%= post_image.post_comments.count %>
-        </li>
+      </div>
     </div>
-  <% end %>
-</div>
-</div>
-</div>
-</div>
-</div>
+  </div>
 </div>

@@ -17,9 +17,6 @@ class PostImagesController < ApplicationController
 
   def index
     @post_images = PostImage.page(params[:page]).reverse_order
-    # @user = User.find(params[:id])
-    # @post_image = PostImage.find(params[:id])
-    
   end
 
   def rank
@@ -38,6 +35,11 @@ class PostImagesController < ApplicationController
     redirect_to post_images_path
   end
   
+  def tag
+    if @tag = params[:tag]   # タグ検索用
+      @post_images = PostImage.tagged_with(params[:tag])   # タグに紐付く投稿
+    end
+  end
 
   private
   def post_image_params
