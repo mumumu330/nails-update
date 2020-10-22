@@ -12,7 +12,7 @@
           </div>
 
           <h4>ユーザー詳細ページ</h4>
-            <li><%#= "id: #{@user.id}" %></li>
+            <li><i class="fas fa-user-friends"></i></li>
             <li>フォロー数:<%= link_to @user.follower.count, user_follower_path(@user.id) %></li>
             <li>フォロワー数:<%= link_to @user.followed.count, user_followed_path(@user.id) %></li><br>
               <% unless @user == current_user %>
