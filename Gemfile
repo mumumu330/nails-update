@@ -43,6 +43,7 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano3-puma'
   gem 'capistrano-rbenv'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -60,6 +61,7 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+  
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gemgem 'devise'
@@ -82,5 +84,3 @@ gem 'jquery-rails'
 
 gem 'acts-as-taggable-on', '~> 6.0'
 
-gem 'carrierwave', '~> 1.0'
-gem 'mini_magick'

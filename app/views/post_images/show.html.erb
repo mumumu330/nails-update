@@ -2,7 +2,7 @@
   <div class="whiteback">
     <div class="whiteblock">
       <div class="row">
-        <div class="col-md-offset-1 col-md-5">
+        <div class="col-md-offset-1 col-md-10">
           <div class="container">
             <div class="row">
               <div class="col-md-12 post_images_container">
@@ -11,10 +11,10 @@
                 <div>
                   <ul>
                     <li>
-                      
+                      <%= link_to user_path(@post_image.user.id) do %>
                         <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                         <%= @post_image.user.name %>
-                      
+                      <% end %>
                     </li>
                     <li><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><%= @post_image.created_at.strftime('%Y/%m/%d') %></li>
                     <li id="favorite_<%= @post_image.id %>">
