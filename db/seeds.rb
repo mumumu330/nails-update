@@ -8,3 +8,4 @@
 
 require './db/seeds/user.rb'
 require './db/seeds/post_image.rb'
+require './db/seeds/favorite.rb'
