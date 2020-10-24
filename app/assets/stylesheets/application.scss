@@ -31,7 +31,10 @@ header {
   color: rgb(105, 105, 109);
   background-color: white;
   .nav-list{
-    margin: 0px 10px 0 5px;
+					a{
+		margin: 0px 10px 0 5px;
+		color: rgb(105, 105, 109);
+					}
   }
 }
 header span {
