@@ -14,8 +14,9 @@
                   </ul>
               </div>
             <% end %>
-              <div>
-                <%= attachment_image_tag @post_image, :image, id: "img_prev", style: "height: 200px; width:200px;" %><br>
+              <div id="test">
+              <%= attachment_image_tag @post_image, :image, id:"img_prev", format:"jpeg", fallback:"no_image.jpg", size: "180x180" %>
+                <br>
                 <%= f.attachment_field :image %>
               </div>
               <div>
