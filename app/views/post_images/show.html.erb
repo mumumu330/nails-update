@@ -3,11 +3,11 @@
     <div class="whiteblock">
       <div class="row">
         <div class="col-md-offset-1 col-md-10">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-12 post_images_container">
+            <div class="thumbnail">
+              
                 <%= attachment_image_tag @post_image, :image, size: "400x400" %>
-              </div>
+
+
                 <div>
                   <ul>
                     <li>
@@ -32,9 +32,11 @@
                       <% end %>
                     </li>
                   </ul>
+
                     <div>
                       <p><%= @post_image.caption %></p>
                     </div>
+
                     <div>
                       <li><span class="glyphicon glyphicon-tag" aria-hidden="true"></span></li>
                       <li>
@@ -47,19 +49,22 @@
                         <% end %>
                       </li>
                     </div>
+
                     <div>
                       <h4><%= @post_image.post_comments.count %>件コメント</h4>
                     </div>
+
                       <ul id="post_comments">
                         <%= render partial: "post_images/post_comment", locals: {post_image: @post_image, post_comments: @post_comments} %>
 		                  </ul>
-                    <%= form_with(model: [@post_image, @post_comment], url: post_image_post_comments_path(@post_image)) do |f| %>
-                      <%= f.text_area :comment, class: "input-mysize", placeholder: "コメント入力", size: "60x5" %><br>
-                      <%= f.submit "送信", class: "btn btn-outline-dark comment-submit float-right" %>
-                    <% end %>
+
+                      <%= form_with(model: [@post_image, @post_comment], url: post_image_post_comments_path(@post_image)) do |f| %>
+                        <%= f.text_area :comment, class: "input-mysize", placeholder: "コメント入力", size: "60x5" %><br>
+                        <%= f.submit "送信", class: "btn btn-outline-dark comment-submit float-right" %>
+                      <% end %>
+                </div>
               </div>
-            </div>
-          </div>
+
         </div>
       </div>
     </div>

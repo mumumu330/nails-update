@@ -10,12 +10,11 @@
         <div>
           <% @rooms.each do |room| %>
             <%# <li><i class="far fa-envelope"></i></li> %>
-            <li>
-							<%= attachment_image_tag room.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50" %> 
-						</li>
+            
 						<li>
               <% room.entries.each do |e| %>
                 <% if e.user.id != current_user.id %>
+                <%= attachment_image_tag e.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50" %> 
                   <%= e.user.name %>
                 <% end %>
               <% end %>
