@@ -38,6 +38,7 @@
               <% end %>
 
           <div>
+            <div class="thumbnail">
             <% @post_images.each do |post_image| %>
               <div>
                 <%= link_to post_image_path(post_image.id) do %>
@@ -58,6 +59,7 @@
                     </li>
                 </div>
               <% end %>
+              </div>
               <%= paginate @post_images %>
           </div>
         </div>
