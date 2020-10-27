@@ -11,7 +11,7 @@
                   <%= attachment_image_tag post_image, :image %>
                 <% end %>
                 <div>
-                  <%= attachment_image_tag post_image.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
+                  <%= attachment_image_tag post_image.user, :profile_image, size: "60x60", fallback: "no_image.jpg" %>
                 </div>
                   <p><%= post_image.caption %></p>
                     <li>

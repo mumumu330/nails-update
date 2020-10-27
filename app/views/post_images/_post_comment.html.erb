@@ -1,6 +1,6 @@
 <% post_comments.each do |post_comment| %>
   <li>
-    <%= attachment_image_tag post_comment.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
+    <%= attachment_image_tag post_comment.user, :profile_image, size: "60x60", fallback: "no_image.jpg" %>
       <div>
         <a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><%= post_comment.user.name %></a>
           <span>

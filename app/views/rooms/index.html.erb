@@ -14,7 +14,7 @@
 						<li>
               <% room.entries.each do |e| %>
                 <% if e.user.id != current_user.id %>
-                <%= attachment_image_tag e.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50" %> 
+                <%= attachment_image_tag e.user, :profile_image, size: "60x60", fallback: "no_image.jpg", size: "50x50" %> 
                   <%= e.user.name %>
                 <% end %>
               <% end %>

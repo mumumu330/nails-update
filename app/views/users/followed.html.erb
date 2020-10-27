@@ -9,7 +9,7 @@
 			  				<section class="col-xs-6 col-md-6 col-lg-6">
 					    		<% @users.each do |user| %>
 							      <li>
-								      <%= attachment_image_tag user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50" %>
+								      <%= attachment_image_tag user, :profile_image, size: "60x60", fallback: "no_image.jpg", size: "50x50" %>
 							      </li>
 							      <li><%= user.name %></li>
 							      <li><%= "フォロー数: #{user.follower.count}" %></li>
