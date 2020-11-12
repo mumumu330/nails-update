@@ -3,6 +3,7 @@ class PostImage < ApplicationRecord
   attachment :image
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :notifications, dependent: :destroy
 
   acts_as_taggable
 
