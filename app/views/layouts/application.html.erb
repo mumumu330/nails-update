@@ -48,6 +48,12 @@
             <li class="nav-list">
               <%= link_to 'DM一覧', rooms_path, class: "glyphicon glyphicon-envelope" %>
             </li>
+            <% if unchecked_notifications.any? %>
+              <i class="fa fa-circle" style="color: gold;"></i>
+            <% end %>
+            <li class="nav-list">
+              <%= link_to "通知", notifications_path, class: "glyphicon glyphicon-bell" %>
+            </li>
             <li class="nav-list">
               <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out" %>
             </li>

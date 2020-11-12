@@ -7,6 +7,7 @@ class PostCommentsController < ApplicationController
     @comment.post_image_id = @post_image.id
     if @comment.save
       @post_comments = PostComment.where(post_image_id: @post_image.id)
+      @comment_post_image.create_notification_comment!(current_user, @comment.id)
     end
     # redirect_to post_image_path(@post_image.id)
   end
