@@ -36,8 +36,8 @@ def save_notification_comment!(current_user, post_comment_id, visited_id)
     # コメントは複数回することが考えられるため、１つの投稿に複数回通知する
     notification = current_user.active_notifications.new(
       post_image_id: id,
-      comment_id: comment_id,
-      post_visited_id: visited_id,
+      post_comment_id: post_comment_id,
+      visited_id: visited_id,
       action: 'post_comment'
     )
     if notification.visiter_id == notification.visited_id
